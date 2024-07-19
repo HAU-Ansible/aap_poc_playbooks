@@ -1,0 +1,13 @@
+---
+
+- name: linux package management
+  hosts: "{{ nodes }}"
+
+  tasks:
+
+    - name: "set {{ package_list }} to {{ package_state }}"
+      ansible.builtin.package:
+        name: "{{ package_list }}"
+        state: "{{ package_state }}"
+
+...
