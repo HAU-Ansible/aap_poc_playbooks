@@ -1,0 +1,28 @@
+---
+
+- name: linux service management
+  hosts: "{{ nodes }}"
+
+  tasks:
+
+    - name: "set {{ service_list }} to state:{{ service_state }}"
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: "{{ service_state }}"
+      loop:
+        - "{{ service_list }}"
+      when:
+        - service_list is defined
+        - service_state is defined
+
+    - name: "set {{ service_list }} to enabled:{{ service_enable }}"
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: "{{ service_enable }}"
+      loop:
+        - "{{ service_list }}"
+      when:
+        - service_enable is defined
+        - service_list is defined
+
+...
