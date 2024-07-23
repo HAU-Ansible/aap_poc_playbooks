@@ -1,0 +1,35 @@
+---
+
+- name: Update Windows Servers
+  hosts: windows_servers
+
+  tasks:
+
+#    - name: Download and Install Windows Updates
+#      win_updates:
+#        category_names:
+#          - Application
+#          - Connectors
+#          - Critical Updates
+#          - Definition Updates
+#          - Developer Kits
+#          - Feature Packs
+#          - Guidance
+#          - Security Updates
+#          - Service Packs
+#          - Tools
+#          - Update Rollups
+#          - Updates
+#          - Upgrades
+#        whitelist:
+#          - KB4093120
+#      reboot: no
+#        reboot_timeout: 600
+
+    - name: process windows updates
+      ansible.windows.win_updates:
+        category_names: "{{ update_category }}"
+      reboot: "{{ reboot_system | default(false) }}"
+        reboot_timeout: "{{ reboot_timeout | default('600') }}"
+
+...
