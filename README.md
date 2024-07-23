@@ -10,5 +10,5 @@ poc playbooks
   - system patching
 - mgmt__windows_feature.yml
   - deploy/undeploy windows feature
-- mgmt__windows)service.yml
+- mgmt__windows_service.yml
   - service control/management
