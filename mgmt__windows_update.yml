@@ -31,5 +31,13 @@
         category_names: "{{ update_category }}"
         reboot: "{{ reboot_system | default(false) }}"
         reboot_timeout: "{{ reboot_timeout | default('600') }}"
+      when: not check_only
+
+    - name: search windows updates
+      ansible.windows.win_updates:
+        category_names: "{{ update_category }}"
+        state: searched
+        log_path: C:\windows_updates.txt
+      when: check_only
 
 ...
