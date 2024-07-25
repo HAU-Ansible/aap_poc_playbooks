@@ -23,7 +23,7 @@
 #          - Upgrades
 #        whitelist:
 #          - KB4093120
-#      reboot: no
+#        reboot: no
 #        reboot_timeout: 600
 
     - name: process windows updates
