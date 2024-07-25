@@ -29,8 +29,8 @@
     - name: process windows updates
       ansible.windows.win_updates:
         category_names: "{{ update_category }}"
-        reboot: "{{ reboot_system | default(false) }}"
-        reboot_timeout: "{{ reboot_timeout | default('600') }}"
+        reboot: "{{ reboot_system | default(true) }}"
+        reboot_timeout: "{{ reboot_timeout | default('3600') }}"
       when: not check_only
 
     - name: search windows updates
