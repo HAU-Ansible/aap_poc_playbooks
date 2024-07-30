@@ -3,28 +3,24 @@
 - name: update windows servers
   hosts: "{{ nodes }}"
 
-  tasks:
+#  vars:
+#    category_names:
+#      - Application
+#      - Connectors
+#      - Critical Updates
+#      - Definition Updates
+#      - Developer Kits
+#      - Feature Packs
+#      - Guidance
+#      - Security Updates
+#      - Service Packs
+#      - Tools
+#      - Update Rollups
+#      - Updates
+#      - Upgrades
+#    check_only: false
 
-#    - name: Download and Install Windows Updates
-#      win_updates:
-#        category_names:
-#          - Application
-#          - Connectors
-#          - Critical Updates
-#          - Definition Updates
-#          - Developer Kits
-#          - Feature Packs
-#          - Guidance
-#          - Security Updates
-#          - Service Packs
-#          - Tools
-#          - Update Rollups
-#          - Updates
-#          - Upgrades
-#        whitelist:
-#          - KB4093120
-#        reboot: no
-#        reboot_timeout: 600
+  tasks:
 
     - name: process windows updates
       ansible.windows.win_updates:
