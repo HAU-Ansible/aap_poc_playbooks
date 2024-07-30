@@ -26,7 +26,7 @@
 #          state: present
 
     - name: manage windows feature
-      ansbile.windows.win_feature:
+      ansible.windows.win_feature:
         name: "{{ windows_feature }}"
         state: "{{ feature_state }}"
         restart: "{{ reboot_system }}"
