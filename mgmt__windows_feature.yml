@@ -4,10 +4,10 @@
   hosts: "{{ nodes }}"
 
   vars:
-    feature_optional: "{{ feature_optional | default(false) }}"
-    include_management_tools: "{{ include_management_tools | default(true) }}"
-    include_sub_features: "{{ include_sub_features | default(true) }}"
-    reboot_system: "{{ reboot_system | default(true) }}"
+    is_optional: "{{ feature_optional | default(false) }}"
+    include_tools: "{{ include_management_tools | default(true) }}"
+    include_subfeatures: "{{ include_sub_features | default(true) }}"
+    reboot: "{{ reboot_system | default(true) }}"
 
   tasks:
 
@@ -15,7 +15,7 @@
       ansible.windows.win_optional_feature:
         name: "{{ windows_feature }}"
         state: "{{ feature_state }}"
-      when: feature_optional
+      when: is_optional
 
 # here's a sample of configuring more than 1 feature at a time
 #      - name: "Enable Telnet Client and .Net 3.5"
@@ -29,9 +29,9 @@
       ansible.windows.win_feature:
         name: "{{ windows_feature }}"
         state: "{{ feature_state }}"
-        restart: "{{ reboot_system }}"
-        include_sub_features: "{{ include_sub_features }}"
-        include_management_tools: "{{ include_management_tools }}"
-      when: not feature_optional
+        restart: "{{ reboot }}"
+        include_sub_features: "{{ include_subfeatures }}"
+        include_management_tools: "{{ include_tools }}"
+      when: not is_optional
 
 ...
