@@ -5,6 +5,9 @@
 
   vars:
     feature_optional: "{{ feature_optional | default(false) }}"
+    include_management_tools: "{{ include_management_tools | default(true) }}"
+    include_sub_features: "{{ include_sub_features | default(true) }}"
+    reboot_system: "{{ reboot_system | default(true) }}"
 
   tasks:
 
@@ -21,5 +24,14 @@
 #            - TelnetClient
 #            - NetFx3
 #          state: present
+
+    - name: manage windows feature
+      ansbile.windows.win_feature:
+        name: "{{ windows_feature }}"
+        state: "{{ feature_state }}"
+        restart: "{{ reboot_system }}"
+        include_sub_features: "{{ include_sub_features }}"
+        include_management_tools: "{{ include_management_tools }}"
+      when: not feature_optional
 
 ...
