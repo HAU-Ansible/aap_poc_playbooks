@@ -1,0 +1,13 @@
+---
+
+- name: mange windows service
+  hosts: "{{ nodes }}"
+
+  tasks:
+
+    - name: "set {{ service_name }} to state: {{ service_state }}"
+      ansible.windows.win_service:
+        names: "{{ service_name }}"
+        state: "{{ service_state }}"
+
+...
