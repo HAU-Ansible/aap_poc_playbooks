@@ -11,7 +11,7 @@
     - name: "manage windows optional features"
       ansible.windows.win_optional_feature:
         name: "{{ windows_feature }}"
-        state: present
+        state: "{{ feature_state }}"
       when: feature_optional
 
 # here's a sample of configuring more than 1 feature at a time
