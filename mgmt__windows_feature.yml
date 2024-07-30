@@ -11,7 +11,7 @@
 
   tasks:
 
-    - name: "manage windows optional features"
+    - name: manage windows optional feature
       ansible.windows.win_optional_feature:
         name: "{{ windows_feature }}"
         state: "{{ feature_state }}"
