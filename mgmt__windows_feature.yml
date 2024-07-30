@@ -10,7 +10,7 @@
 
     - name: "manage windows optional features"
       ansible.windows.win_optional_feature:
-        name: "{{ optional_feature }}"
+        name: "{{ windows_feature }}"
         state: present
       when: feature_optional
 
